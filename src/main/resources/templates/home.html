@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/bootstrap.min.css}">
+
+    <title>Home</title>
+</head>
+<body class="p-3 mb-2 bg-light text-black">
+<div class="container">
+    <div id="logoutDiv">
+        <form th:action="@{/logout}" method="POST">
+            <button type="submit" class="btn btn-secondary float-right" id="logout-button" th:if="${isAuthenticated}" value="Logout">Logout</button>
+        </form>
+        <form th:action="@{/login}" method="GET">
+            <button type="submit" class="btn btn-success float-right" id="login-button" th:if="${!isAuthenticated}" value="Login">Login</button>
+        </form>
+        <form th:action="@{/signup}" method="GET">
+            <button type="submit" class="btn btn-success float-right" id="signup-button" th:if="${!isAuthenticated}" value="SignUp">Sign Up</button>
+        </form>
+    </div>
+    <div id="contentDiv" style="clear: right;">
+        <nav style="clear: right;">
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-credentials-tab" data-toggle="tab" href="#nav-credentials" role="tab" aria-controls="nav-credentials" aria-selected="true">Contacts</a>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-credentials" role="tabpanel" aria-labelledby="nav-credentials-tab">
+                <button style="margin: 0.25em;" type="button" id="createCredential" th:if="${isAuthenticated}" class="btn btn-info float-right" onclick="showCredentialModal()">
+                    + Add a New Contact
+                </button>
+
+                <div class="table-responsive">
+                    <table class="table table-striped" id="credentialTable">
+                        <thead>
+                        <tr>
+                            <th style="width: 20%" scope="col"></th>
+                            <th style="width: 35%" scope="col">Firstname</th>
+                            <th style="width: 20%" scope="col">Lastname</th>
+                            <th style="width: 20%" scope="col">Phone Number</th>
+                            <th style="width: 25%" scope="col">Password</th>
+                        </tr>
+                        </thead>
+                        <tbody th:each="contact:${contacts}">
+                        <tr>
+                            <td>
+                                <button type="button" class="btn btn-success" id="editCredentialButton"
+                                        th:contactId="${contact.getContactId()}"
+                                        th:firstname="${contact.getFirstname()}"
+                                        th:lastname="${contact.getLastname()}"
+                                        th:email="${contact.getEmail()}"
+                                        th:phoneNumber="${contact.getPhoneNumber()}"
+                                        th:password="${encryption.decryptValue(contact.getPassword(), contact.getKey())}"
+                                        th:contactKey="${contact.getKey()}"
+                                        th:dateOfBirth="${contact.getDateOfBirth()}"
+                                        onclick="editCredentialModal(
+                                    this.getAttribute('contactId'),
+                                    this.getAttribute('firstname'),
+                                    this.getAttribute('lastname'),
+                                    this.getAttribute('email'),
+                                    this.getAttribute('phoneNumber'),
+                                    this.getAttribute('password'),
+                                    this.getAttribute('contactKey'),
+                                    this.getAttribute('dateOfBirth'))">
+                                    View</button>
+                                <a type="button" class="btn btn-danger" id="deleteCredential"
+                                   th:contactId="${contact.getContactId()}"
+                                   th:if="${isAuthenticated}"
+                                   onclick="showDeleteCredentialModal(this.getAttribute('contactId'))">Delete</a>
+                            </td>
+                            <th scope="row" th:text="${contact.getFirstname()}" id="credentialUrlView"></th>
+                            <td  th:text="${contact.getLastname()}" id="credentialUsernameView"></td>
+                            <td  th:text="${contact.getPhoneNumber()}" id="credentialPhoneNumber"></td>
+                            <td  th:text="${contact.getPassword()}" id="credentialPasswordView"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div th:insert="popups/createCredential :: createCredential"></div>
+                <div th:insert="popups/deleteCredential :: deleteCredential"></div>
+                <div th:insert="popups/editCredential :: editCredential"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/js/jquery-slim.min.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+
+<!--For opening the note modal-->
+<script type="text/javascript">
+    // For opening the credentials modal
+    function showCredentialModal(contactId, firstname, lastname, email, phoneNumber, password, contactKey, dateOfBirth) {
+        $('#contact-id').val(contactId ? contactId : '');
+        $('#contact-firstname').val(firstname ? firstname : '');
+        $('#contact-lastname').val(lastname ? lastname : '');
+        $('#contact-email').val(email ? email : '');
+        $('#contact-phoneNumber').val(phoneNumber ? phoneNumber : '');
+        $('#contact-password').val(password ? password : '');
+        $('#contact-key').val(contactKey ? contactKey : '');
+        $('#contact-dateOfBirth').val(dateOfBirth ? dateOfBirth : '');
+        $('#credentialModal').modal('show');
+    }
+
+    function editCredentialModal(contactId, firstname, lastname, email, phoneNumber, password, contactKey, dateOfBirth) {
+        $('#editContact-id').val(contactId ? contactId : '');
+        $('#editContact-firstname').val(firstname ? firstname : '');
+        $('#editContact-lastname').val(lastname ? lastname : '');
+        $('#editContact-email').val(email ? email : '');
+        $('#editContact-phoneNumber').val(phoneNumber ? phoneNumber : '');
+        $('#editContact-password').val(password ? password : '');
+        $('#editContact-key').val(contactKey ? contactKey : '');
+        $('#editContact-dateOfBirth').val(dateOfBirth ? dateOfBirth : '');
+        $('#editCredentialModal').modal('show');
+    }
+
+    function showDeleteCredentialModal(contactId) {
+        $('#deleteCredentialId').val(contactId ? contactId : '');
+        $('#deleteCredentialModal').modal('show');
+    }
+</script>
+</body>
+</html>
