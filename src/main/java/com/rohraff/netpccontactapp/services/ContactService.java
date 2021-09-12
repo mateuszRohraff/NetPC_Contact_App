@@ -31,7 +31,6 @@ public class ContactService {
 
     public List<Contact> getContacts() {
         List<Contact> contacts = contactMapper.getContacts();
-        contacts.forEach(System.out::println);
         return contacts;
     }
 
