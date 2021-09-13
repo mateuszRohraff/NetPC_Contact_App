@@ -1,0 +1,35 @@
+Aplikacja dzieli się na 5 modułów:
+
+SECURITY
+
+    Moduł zawiera klasę konfiguracyjną rozszerzajacą klasę "WebSecurityConfigurerAdapter", pochodzącą z biblioteki Spring Security.
+W klasie tej definiujemy endpointy, które nie mają zostać zabezpieczone. Wstrzukujemy również klasę "AuthenticationService", zapewniającą
+logikę autoryzacji użytkowników.
+
+CONTROLLER
+-ContactController
+    Klasa deniniująca endpoint "/contact", który obsługuje operacje CRUD na obiekcie "Contact".
+-HomeController
+    Klasa definiujacą główny endpoint "/home". Jej zadaniem jest przekazanie do szablonu HTML generowanego przez
+bibliotekę ThymeLeaf obiektów użytych do generowania widoku apliakcji.
+-SignUpController
+    Klasa obsługująca endpoint "signup" oraz zapeniająca logikę obsługi błędów. (Niestety z powodu  niewystarczającej ilości czasu
+jest to jedyna klasa w której zaimplementowałem obsługę błędów)
+
+MAPPER
+-Zawiera interfejsy biblioteki MyBatis. Każdy interfejs zawiera zapytania SQL do bazy danych jendocześnie mapując obiekty apliakjci i bazy dancyh.
+
+MODEL
+-Zawiera klasy POJO. Klasa "ConatactDao" została wprowadzona w celu przemapowania zmiennej "dateOfBirth" na poprawny typ.
+Thymeleaf podczas generowania nowego kontaktu może przesłać wprowadzoną datę jedynie jako String, Dlatego w celu zapisania
+daty do bazy w poprawnym typie potrzebne jest mapowanie.
+
+SERVICES
+-EncrytpionService
+    jest to klasa odpowiadająca za zaszyfrowanie oraz odzszyfrowanie haseł podanych w formularzu kontaktu.
+-Authentication Service
+    Klasa odpowiadajaca za autoryzownie użytkowników w aplikacji.
+-ContactService
+    Klasa zawierające logikę biznesową obsługi funkcjonalnosci CRUD aplikacji.
+-HashService/UserService
+    Klasy odpowiadające za udostępnienie logiki bezpiecznego tworzenia nowych użytkowników.

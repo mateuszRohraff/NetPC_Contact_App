@@ -9,6 +9,7 @@ public class Contact {
     private Integer phoneNumber;
     private String key;
     private String password;
+    //Thymeleaf nie jest w stanie obsłużyć przekazania typu LocalDate, dlatego apliakcja używa Stringa oraz mapowania do LocalDate.
     private String dateOfBirth;
 
     public Contact(Integer contactId, String firstname, String lastname, String email, Integer phoneNumber, String key, String password, String dateOfBirth) {

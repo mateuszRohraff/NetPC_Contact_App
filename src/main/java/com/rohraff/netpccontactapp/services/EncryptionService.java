@@ -15,7 +15,7 @@ import java.util.Base64;
 @Service
 public class EncryptionService {
     private Logger logger = LoggerFactory.getLogger(EncryptionService.class);
-
+    /*Tej logiki szyfrowania używam do obsługi hasła podanego w formularzu*/
     public String encryptValue(String data, String key) {
         byte[] encryptedValue = null;
 

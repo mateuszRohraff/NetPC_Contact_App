@@ -1,0 +1,16 @@
+Aplikacja została stworzona w podejściu SPA.
+
+Główny endpoint /home prezentuje listę kontaktów. Zaprezentowane są dane
+-imię
+-nazwisko
+-numer telefonu
+-hasło (zaszyfrowane)
+
+Dla użytkowników niezalogowanych dostępna jest jedynie opcja "View".
+Po otwarciu formularza widoczne są dla nas wszystkie dane kontaktu.
+Formularz prezentuje również hasło w formie odszyfrowanej.
+
+Po utworzeniu i zalogowaniu się do apliakcji, otrzymujemy dostęp do edycji, tworzenia i usuwania kontaktów.
+Opcja tworzenia i usuwania kontaktów jest dostępna z głownego widoku apliakcji.
+Opcja edycji jest dostępna po kliknęciu przycisku View.
+Usunięcie kontaktu wymaga dodatkowego potwierdzenia w celach bezpieczeństwa.

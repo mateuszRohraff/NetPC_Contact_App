@@ -24,10 +24,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        /*Definiujemy niezabezpieczone endpointy.
+         Moduły css i js muszą być dodane w celu poprawnego generowania widoku przez thymelaf*/
         http.authorizeRequests()
                 .antMatchers("/signup", "/home", "/css/**", "/js/**").permitAll()
                 .anyRequest().authenticated();
-
+        /*Definiujemy endpoint użyty do autoryzacji poprzez Spring Security
+        * oraz definiujemy zachowanie aplikacji po zalogowaniu i wylogowaniu.*/
         http.formLogin()
                 .loginPage("/login")
                 .permitAll()

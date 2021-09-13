@@ -38,6 +38,7 @@ public class UserService {
         return userMapper.getUser(username);
     }
 
+    //Metoda sprawdza, czy użytkownik jest zautoryzowany. Na jej podstawie generowny jest widok aplikacji.
     public boolean checkAuthentication() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return authentication != null && !(authentication instanceof AnonymousAuthenticationToken) && authentication.isAuthenticated();
