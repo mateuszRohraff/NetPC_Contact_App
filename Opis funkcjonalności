@@ -18,6 +18,9 @@ Opcja tworzenia i usuwania kontaktów jest dostępna z głównego widoku aplikac
 Opcja edycji jest dostępna po kliknięciu przycisku View.
 Usunięcie kontaktu wymaga dodatkowego potwierdzenia w celach bezpieczeństwa.
 
+Po wykonaiu każdej akcji wyświetla się komunikat informujący o stanie operacji.
+Komunikat znika po przeładowaniu strony.
+
 Walidacja po stronie back-end polega na sprawdzeniu unikalności adresu email.
 
 Walidacja formularza odbywa się za pomocą atrybutów HTML. Formularz posiada następujące walidacje:
