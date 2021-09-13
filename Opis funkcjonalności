@@ -10,10 +10,23 @@ Dla użytkowników niezalogowanych dostępna jest jedynie opcja "View".
 Po otwarciu formularza widoczne są dla nas wszystkie dane kontaktu.
 Formularz prezentuje również hasło w formie odszyfrowanej.
 
-Podczas tworzenia konta apliakcja sprawdza unikatowość pola "username" oraz sprawdza podstawową złożoność hasła.
+Podczas tworzenia konta aplikacja sprawdza unikatowość pola "username" oraz sprawdza podstawową złożoność hasła.
+(Minimum 8 cyfr oraz jedna cyfra -> tutaj walidacja odbywa się po stronie back-end.
 
 Po utworzeniu i zalogowaniu się do apliakcji, otrzymujemy dostęp do edycji, tworzenia i usuwania kontaktów.
-Opcja tworzenia i usuwania kontaktów jest dostępna z głownego widoku apliakcji.
-Opcja edycji jest dostępna po kliknęciu przycisku View.
-Pole Email jest walidowane pod kątem dupliaktów w bazie danych.
+Opcja tworzenia i usuwania kontaktów jest dostępna z głównego widoku aplikacji.
+Opcja edycji jest dostępna po kliknięciu przycisku View.
 Usunięcie kontaktu wymaga dodatkowego potwierdzenia w celach bezpieczeństwa.
+
+Walidacja po stronie back-end polega na sprawdzeniu unikalności adresu email.
+
+Walidacja formularza odbywa się za pomocą atrybutów HTML. Formularz posiada następujące walidacje:
+-Każde pole jest wymagane
+-Pole "email" wymaga wpisania znaku "@".
+-Pole "phone Number" wymaga podania dokładnie 9 cyfr.
+-Pole "hasło" wymaga podania ciągu znaków o długości 8-12 dodatkowo zawierającego minimum po jednym znaku z wymienionych:
+    -znak specjalny
+    -cyfra
+    -mała litera
+    -duża litera
+-Pole "dateOfBirth" wymaga podania daty w formie dd-mm-rrrr
