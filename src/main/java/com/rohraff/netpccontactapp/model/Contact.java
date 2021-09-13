@@ -1,5 +1,7 @@
 package com.rohraff.netpccontactapp.model;
 
+import org.springframework.validation.annotation.Validated;
+
 public class Contact {
 
     private Integer contactId;

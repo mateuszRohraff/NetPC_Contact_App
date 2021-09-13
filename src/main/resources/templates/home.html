@@ -10,6 +10,9 @@
 </head>
 <body class="p-3 mb-2 bg-light text-black">
 <div class="container">
+    <div id="information-msg" th:if="${message}" class="alert alert-info">
+        <span th:text="${message}"></span>
+    </div>
     <div id="logoutDiv">
         <form th:action="@{/logout}" method="POST">
             <button type="submit" class="btn btn-secondary float-right" id="logout-button" th:if="${isAuthenticated}" value="Logout">Logout</button>
@@ -79,9 +82,9 @@
                         </tbody>
                     </table>
                 </div>
-                <div th:insert="popups/createCredential :: createCredential"></div>
-                <div th:insert="popups/deleteCredential :: deleteCredential"></div>
-                <div th:insert="popups/editCredential :: editCredential"></div>
+                <div th:insert="fragments/createContact :: createContact"></div>
+                <div th:insert="fragments/deleteContact :: deleteContact"></div>
+                <div th:insert="fragments/editContact :: editContact"></div>
             </div>
         </div>
     </div>

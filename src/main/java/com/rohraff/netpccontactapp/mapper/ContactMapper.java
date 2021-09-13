@@ -21,4 +21,7 @@ public interface ContactMapper {
 
     @Update("UPDATE CONTACTS SET firstname=#{firstname}, lastname=#{lastname}, email=#{email}, password=#{password}, phoneNumber=#{phoneNumber} where contactId =#{contactId}")
     void updateContacts(ContactDao contact);
+
+    @Select("SELECT EMAIL FROM CONTACTS")
+    List<String> getAllEmailAddresses();
 }
