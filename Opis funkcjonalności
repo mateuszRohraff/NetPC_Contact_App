@@ -10,6 +10,8 @@ Dla użytkowników niezalogowanych dostępna jest jedynie opcja "View".
 Po otwarciu formularza widoczne są dla nas wszystkie dane kontaktu.
 Formularz prezentuje również hasło w formie odszyfrowanej.
 
+Podczas tworzenia konta apliakcja sprawdza unikatowość pola "username" oraz sprawdza podstawową złożoność hasła.
+
 Po utworzeniu i zalogowaniu się do apliakcji, otrzymujemy dostęp do edycji, tworzenia i usuwania kontaktów.
 Opcja tworzenia i usuwania kontaktów jest dostępna z głownego widoku apliakcji.
 Opcja edycji jest dostępna po kliknęciu przycisku View.

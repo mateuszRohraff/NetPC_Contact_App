@@ -8,7 +8,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 @Service
 public class UserService {
@@ -42,6 +46,23 @@ public class UserService {
     public boolean checkAuthentication() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return authentication != null && !(authentication instanceof AnonymousAuthenticationToken) && authentication.isAuthenticated();
+    }
+
+
+    public Optional<String> checkPasswordComplexity(String password) {
+        if(password.length() < 8) {
+            return Optional.of("Password must be longer than 8 characters!");
+        }
+        List<Character> chars = new ArrayList<>();
+        for (char ch : password.toCharArray()) {
+            if(Character.isDigit(ch)) {
+                chars.add(ch);
+            }
+        }
+        if(chars.isEmpty()){
+            return Optional.of("The password must contain at least one digit!");
+        }
+        return Optional.empty();
     }
 }
 

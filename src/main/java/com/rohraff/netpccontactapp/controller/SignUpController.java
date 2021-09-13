@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Optional;
+
 @Controller
 @RequestMapping("/signup")
 public class SignUpController {
@@ -30,6 +32,11 @@ public class SignUpController {
 
         if (!userService.isUsernameAvailable(user.getUsername())) {
             signupError = "The username already exists.";
+        }
+
+        Optional<String> message = userService.checkPasswordComplexity(user.getPassword());
+        if(message.isPresent()) {
+            signupError = message.get();
         }
 
         if (signupError == null) {
