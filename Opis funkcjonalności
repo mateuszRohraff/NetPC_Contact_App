@@ -12,6 +12,8 @@ Formularz prezentuje również hasło w formie odszyfrowanej.
 
 Podczas tworzenia konta aplikacja sprawdza unikatowość pola "username" oraz sprawdza podstawową złożoność hasła.
 (Minimum 8 cyfr oraz jedna cyfra -> tutaj walidacja odbywa się po stronie back-end.
+(Taką walidację przeprowadziłbym podczas tworzenia REST API, oczywiście tutaj lepiej walidować na front-end, ale
+ten sposób zaprezentowałem w formularzu.
 
 Po utworzeniu i zalogowaniu się do apliakcji, otrzymujemy dostęp do edycji, tworzenia i usuwania kontaktów.
 Opcja tworzenia i usuwania kontaktów jest dostępna z głównego widoku aplikacji.
