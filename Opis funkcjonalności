@@ -15,4 +15,5 @@ Podczas tworzenia konta apliakcja sprawdza unikatowość pola "username" oraz sp
 Po utworzeniu i zalogowaniu się do apliakcji, otrzymujemy dostęp do edycji, tworzenia i usuwania kontaktów.
 Opcja tworzenia i usuwania kontaktów jest dostępna z głownego widoku apliakcji.
 Opcja edycji jest dostępna po kliknęciu przycisku View.
+Pole Email jest walidowane pod kątem dupliaktów w bazie danych.
 Usunięcie kontaktu wymaga dodatkowego potwierdzenia w celach bezpieczeństwa.

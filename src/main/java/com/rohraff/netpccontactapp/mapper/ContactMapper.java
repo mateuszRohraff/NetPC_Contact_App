@@ -5,6 +5,7 @@ import com.rohraff.netpccontactapp.model.ContactDao;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Mapper
 public interface ContactMapper {
@@ -24,4 +25,7 @@ public interface ContactMapper {
 
     @Select("SELECT EMAIL FROM CONTACTS")
     List<String> getAllEmailAddresses();
+
+    @Select("SELECT EMAIL FROM CONTACTS WHERE contactId = #{contactId}")
+    String getEmail(int contactId);
 }
