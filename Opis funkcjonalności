@@ -35,3 +35,7 @@ Walidacja formularza odbywa się za pomocą atrybutów HTML. Formularz posiada n
     -mała litera
     -duża litera
 -Pole "dateOfBirth" wymaga podania daty w formie dd-mm-rrrr
+
+TESTY
+Do aplikacji udało mi się wykonać testy automatyczne pokrywające stronę Login oraz SignUp, niestety nie zdążyłem wykonać testów
+pokrywająch endpoint "/home"
